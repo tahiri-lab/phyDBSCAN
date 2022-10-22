@@ -9,4 +9,34 @@
 
 <h2  align="center">Building alternative phylogenetic trees using DBSCAN and Robinson and Foulds distance</h2>
 
-# phyDBSCAN
+
+
+<details open>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About the project</a>
+    </li>
+    <li>
+      <a href="#Installation">Installation</a>
+    </li>
+    <li>
+      <a href="#Examples">Examples</a>
+    </li>
+    <li>
+      <a href="#contact">Contact</a>
+    </li>
+  </ol>
+</details>
+
+
+
+# About the project
+
+# Installation
+
+# Examples
+
+# Contact
+Please email us at : <Nadia.Tahiri@USherbrooke.ca> for any question or feedback.
+
