@@ -7,6 +7,6 @@
         </p>
 
 
-<h2  align="center">Multi-platform application for analyze phylogenetic trees with climatic parameters</h2>
+<h2  align="center">Building alternative phylogenetic trees using DBSCAN and Robinson and Foulds distance</h2>
 
 # phyDBSCAN
