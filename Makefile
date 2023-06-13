@@ -19,10 +19,10 @@ obj/%.o: $(SRC_DIR)/%.cpp
 .PHONY: clean
 
 run_sample2d: $(OUT)
-	$(OUT) $(INPUT_DIR)/sample2d.csv 0.2 10 > $(OUT_DIR)/output.csv
+	$(OUT) $(INPUT_DIR)/sample2d.csv 0.2 10 > $(OUT_DIR)/output_2d.csv
 
 run_sample3d: $(OUT)
-	$(OUT) $(INPUT_DIR)/sample3d.csv 1 10 > $(OUT_DIR)/output.csv
+	$(OUT) $(INPUT_DIR)/sample3d.csv 1 10 > $(OUT_DIR)/output_3d.csv
 
 clean:
 	rm -f $(OBJ) $(OUT)
