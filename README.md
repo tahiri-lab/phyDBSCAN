@@ -41,15 +41,19 @@ A part of the project is inspired by https://github.com/Eleobert/dbscan
 
 Use Makefile to install the project
 
-```bash
+```
 make
 ```
 
-```bash
-make run
-```
-
 # Examples
+
+To run the project
+
+```
+make run_sample2d
+
+make run_sample3d
+```
 
 # Contact
 Please email us at : <Nadia.Tahiri@USherbrooke.ca> or <Thibaut.Leval@USherbrooke.ca> for any question or feedback.
