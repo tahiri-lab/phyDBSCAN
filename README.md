@@ -33,10 +33,24 @@
 
 # About the project
 
+Tree classification with dbscan algorithm and multiple dimension, until 250 dimensions.
+
+A part of the project is inspired by https://github.com/Eleobert/dbscan
+
 # Installation
+
+Use Makefile to install the project
+
+```bash
+make
+```
+
+```bash
+make run
+```
 
 # Examples
 
 # Contact
-Please email us at : <Nadia.Tahiri@USherbrooke.ca> for any question or feedback.
+Please email us at : <Nadia.Tahiri@USherbrooke.ca> or <Thibaut.Leval@USherbrooke.ca> for any question or feedback.
 

@@ -1,0 +1,15 @@
+# Fichiers d'objets compilés
+*.o
+*.obj
+
+# Fichiers exécutables
+*.exe
+*.out
+
+# Fichiers générés par l'IDE
+.vscode/
+.idea/
+
+# Fichiers du dossier out
+out/*
+!out/.gitkeep
