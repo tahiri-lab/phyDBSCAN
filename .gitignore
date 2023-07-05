@@ -5,11 +5,13 @@
 # Fichiers exécutables
 *.exe
 *.out
+# Dossiers correspondants
+bin/
+out/
+
+# Fichiers générés
+resources/output_data.csv
 
 # Fichiers générés par l'IDE
 .vscode/
 .idea/
-
-# Fichiers du dossier out
-out/*
-!out/.gitkeep

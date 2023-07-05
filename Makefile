@@ -1,28 +1,32 @@
-# Makefile for C++ project
-CC = g++
-CFLAGS = -I include/ -std=c++20
-SRC_DIR = ./src
-SRC = $(wildcard $(SRC_DIR)/*.cpp)
-OBJ = $(patsubst $(SRC_DIR)/%.cpp,obj/%.o,$(SRC))
-OUT_DIR = ./out
-OUT = $(OUT_DIR)/program
-INPUT_DIR = ./resources/input
+# Variables
+CXX = g++
+CXXFLAGS = -std=c++11 -Wall -Wextra
+TARGET = bin/poc
+SRCDIR = src
+INCDIR = include
+OBJDIR = out
+BINDIR = bin
+SRCS = $(wildcard $(SRCDIR)/*.cpp)
+OBJS = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SRCS))
+DATA_FILE = resources/input_data.txt
 
-all: $(OUT)
+# Création des dossiers
+$(shell mkdir -p $(OBJDIR))
+$(shell mkdir -p $(BINDIR))
 
-$(OUT): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+# Règles
+all: $(TARGET)
 
-obj/%.o: $(SRC_DIR)/%.cpp
-	$(CC) $(CFLAGS) -c -o $@ $<
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(TARGET)
 
-.PHONY: clean
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -I$(INCDIR) -c $< -o $@
 
-run_sample2d: $(OUT)
-	$(OUT) $(INPUT_DIR)/sample2d.csv 0.2 10 > $(OUT_DIR)/output_2d.csv
-
-run_sample3d: $(OUT)
-	$(OUT) $(INPUT_DIR)/sample3d.csv 1 10 > $(OUT_DIR)/output_3d.csv
+run: $(TARGET)
+	./$(TARGET) $(DATA_FILE)
 
 clean:
-	rm -f $(OBJ) $(OUT)
+	rm -rf $(OBJDIR) $(BINDIR)
+
+.PHONY: all run clean
