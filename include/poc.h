@@ -26,6 +26,8 @@ enum class PointType {
  */
 struct Point {
     std::vector<double> distances; /**< Les distances à tous les autres points */
+    double x;
+    double y;
     PointType type = PointType::UNDEFINED; /**< Le type du point (UNDEFINED, Core, Border ou Outlier) */
     int group = 0; /**< Le groupe auquel le point appartient */
 };
@@ -70,6 +72,16 @@ void printResults(int groupCounter);
  * @param string
  */
 void generateOutputFile(const char *string);
+
+/**
+ * Fonction pour trouver les coordonnées du ième point, intersection des cercles des points précédents.
+ *
+ * @param points
+ * @param targetIndex
+ * @param incertitude
+ * @return
+ */
+bool findIntersectionPoint(std::vector<Point>& points, int targetIndex, double incertitude);
 
 #endif // POC3_H
 #endif //POC_POC_H
