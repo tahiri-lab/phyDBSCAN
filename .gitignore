@@ -8,6 +8,8 @@
 # Dossiers correspondants
 bin/
 out/
+cmake-build-debug
+CMakeFiles
 
 # Fichiers générés
 resources/output_data.csv
@@ -15,3 +17,6 @@ resources/output_data.csv
 # Fichiers générés par l'IDE
 .vscode/
 .idea/
+CMakeCache.txt
+cmake_install.cmake
+.cmake
