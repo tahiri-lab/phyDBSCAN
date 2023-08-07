@@ -1,6 +1,7 @@
 #include "FileIO.h"
 
 void readInputFile(const std::string& fileName, std::vector<Point>& points) {
+    std::cout << "Reading input data..." << std::endl;
     std::ifstream inputFile(fileName);
     std::string line;
 

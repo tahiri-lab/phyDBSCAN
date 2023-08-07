@@ -2,6 +2,7 @@
 #define PHYDBSCAN_CLUSTERING_H
 
 #include <vector>
+#include <iostream>
 #include "Point.h"
 
 /**
