@@ -66,7 +66,7 @@ Alternatively, if you are using Clion IDE, you can use CMake for building the pr
 2. Go to Run -> Edit Configurations
 3. Click on the "+" button and select "CMake"
 4. In the "Name" field, enter "phyDBSCAN" and fill information like in the following image:
-   [CMakeLists.png](https://github.com/tahiri-lab/phyDBSCAN/blob/main/img/CMakeLists.png)
+   ![CMakeLists.png](https://github.com/tahiri-lab/phyDBSCAN/blob/main/img/CMakeLists.png)
 5. Click on "OK" and run the project
 
 # Examples of use
@@ -97,7 +97,7 @@ Input Data Set used in this example (distance matrix):
 
 The output of the program is the following:
 
-[exampleResult.png](https://github.com/tahiri-lab/phyDBSCAN/blob/main/img/exampleResult.png)
+![exampleResult.png](https://github.com/tahiri-lab/phyDBSCAN/blob/main/img/exampleResult.png)
 
 # Contact
 Please email us at : <Nadia.Tahiri@USherbrooke.ca> or <Thibaut.Leval@USherbrooke.ca> for any question or feedback.
