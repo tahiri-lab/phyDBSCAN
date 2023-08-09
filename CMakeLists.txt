@@ -8,14 +8,14 @@ set(SOURCES
         src/poc.cpp
         src/FileIO.cpp
         src/Clustering.cpp
-        src/EpsilonCalculator.cpp
+        src/HyperparametersCalculator.cpp
         )
 
 set(HEADERS
         include/FileIO.h
         include/Clustering.h
         include/Point.h
-        include/EpsilonCalculator.h
+        include/HyperparametersCalculator.h
         )
 
 # Add executable target

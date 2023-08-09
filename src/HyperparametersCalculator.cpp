@@ -1,4 +1,4 @@
-#include "EpsilonCalculator.h"
+#include "HyperparametersCalculator.h"
 #include <algorithm>
 
 double findBestEpsilon(const std::vector<Point>& points) {
@@ -30,4 +30,24 @@ double findBestEpsilon(const std::vector<Point>& points) {
     }
 
     return totalMaxDiff / maxDiffs.size();
+}
+
+int findBestMinPoints(const std::vector<Point>& points, double epsilon) {
+    std::cout << "Calculating best minPoints..." << std::endl;
+    std::vector<int> minPoints;
+    for (const Point& point : points) {
+        int count = 0;
+        for (double distance : point.distances) {
+            if (distance <= epsilon) {
+                ++count;
+            }
+        }
+        minPoints.push_back(count);
+    }
+
+    int totalMinPoints = 0.0;
+    for (int count : minPoints) {
+        totalMinPoints += count;
+    }
+    return totalMinPoints / minPoints.size();
 }

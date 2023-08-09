@@ -67,7 +67,7 @@ Alternatively, if you are using Clion IDE, you can use CMake for building the pr
 3. Click on the "+" button and select "CMake"
 4. In the "Name" field, enter "phyDBSCAN" and fill information like in the following image:
    ![CMakeLists.png](https://github.com/tahiri-lab/phyDBSCAN/blob/main/img/CMakeLists.png)
-5. Click on "OK" and run the project
+5. Click on "Apply" and "OK" and run the project
 
 # Examples of use
 

@@ -79,6 +79,9 @@ void printResults(const std::vector<Point>& points) {
             case PointType::OUTLIER:
                 std::cout << ", Outlier";
                 break;
+            default:
+                std::cout << ", N/A";
+                break;
         }
         std::cout << '\n';
     }
