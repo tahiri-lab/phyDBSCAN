@@ -16,7 +16,7 @@ set(HEADERS
         include/Clustering.h
         include/Point.h
         include/HyperparametersCalculator.h
-        )
+        src/ARI.cpp)
 
 # Add executable target
 add_executable(phyDBSCAN ${SOURCES} ${HEADERS})
