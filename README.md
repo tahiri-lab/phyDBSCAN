@@ -71,6 +71,8 @@ Alternatively, if you are using Clion IDE, you can use CMake for building the pr
 
 # Examples of use
 
+To test, we took a matrix from the "resources/input_simulation_dataset.txt" file
+
 Input Data Set used in this example (distance matrix):
 
 ```0	0.4	0.4	0.4	0.4	1	1	1	1	1	0.8	1	1	1	1	0.8	0.8	0.6	0.8	0.8
@@ -95,10 +97,18 @@ Input Data Set used in this example (distance matrix):
 0.8	0.8	0.8	0.6	1	1	1	1	1	1	1	1	1	1	1	0.4	0.6	0.6	0.6	0
 ```
 
-The output of the program is the following:
+In the "input_simulated_data.txt" file, the first line of this dataset is the following:
+20	8	4	0	50
+
+The first number (20) is the number of points in the dataset, the third number (4) is the number of clusters expected.
+
+The output of the program is the following (with the number of groups expected in the dataset : 4:
 
 ![exampleResult.png](https://github.com/tahiri-lab/phyDBSCAN/blob/main/img/exampleResult.png)
 
+And the output for ARI calculation is the following (*Only if there are no Outliers points*):
+
+![exampleARICalculation.png](https://github.com/tahiri-lab/phyDBSCAN/blob/main/img/exampleARICalculation.png)
+
 # Contact
 Please email us at : <Nadia.Tahiri@USherbrooke.ca> or <Thibaut.Leval@USherbrooke.ca> for any question or feedback.
-
