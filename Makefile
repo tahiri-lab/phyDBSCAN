@@ -129,6 +129,30 @@ phyDBSCAN/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/phyDBSCAN.dir/build.make CMakeFiles/phyDBSCAN.dir/build
 .PHONY : phyDBSCAN/fast
 
+src/ARI.o: src/ARI.cpp.o
+.PHONY : src/ARI.o
+
+# target to build an object file
+src/ARI.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/phyDBSCAN.dir/build.make CMakeFiles/phyDBSCAN.dir/src/ARI.cpp.o
+.PHONY : src/ARI.cpp.o
+
+src/ARI.i: src/ARI.cpp.i
+.PHONY : src/ARI.i
+
+# target to preprocess a source file
+src/ARI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/phyDBSCAN.dir/build.make CMakeFiles/phyDBSCAN.dir/src/ARI.cpp.i
+.PHONY : src/ARI.cpp.i
+
+src/ARI.s: src/ARI.cpp.s
+.PHONY : src/ARI.s
+
+# target to generate assembly for a file
+src/ARI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/phyDBSCAN.dir/build.make CMakeFiles/phyDBSCAN.dir/src/ARI.cpp.s
+.PHONY : src/ARI.cpp.s
+
 src/Clustering.o: src/Clustering.cpp.o
 .PHONY : src/Clustering.o
 
@@ -234,6 +258,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... phyDBSCAN"
+	@echo "... src/ARI.o"
+	@echo "... src/ARI.i"
+	@echo "... src/ARI.s"
 	@echo "... src/Clustering.o"
 	@echo "... src/Clustering.i"
 	@echo "... src/Clustering.s"
@@ -248,7 +275,11 @@ help:
 	@echo "... src/poc.s"
 .PHONY : help
 
+# The main run target
+run: phyDBSCAN
+	./phyDBSCAN
 
+.PHONY: run
 
 #=============================================================================
 # Special targets to cleanup operation of make.
