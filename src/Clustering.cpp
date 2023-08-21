@@ -65,7 +65,7 @@ void determineBorderAndOutlier(std::vector<Point>& points, double epsilon) {
 
 void printResults(const std::vector<Point>& points) {
     std::cout << "Writing results..." << std::endl;
-    std::cout << "\nNumber of groups: " << points[points.size() - 1].group << '\n';
+    std::cout << "\nNumber of groups found: " << points[points.size() - 1].group << '\n';
     std::cout << "- Point \"#\": Group \"#\", \"Type\" (\"Core\"/\"Border\"/\"Outlier\")\n";
     for (size_t i = 0; i < points.size(); ++i) {
         std::cout << "> Point " << i + 1 << ": Group " << (points[i].group == -1 ? "N/A" : std::to_string(points[i].group));

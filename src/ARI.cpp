@@ -2,28 +2,37 @@
 #include "ARI.h"
 #include <iostream>
 
+int userDefinedGroupCountInput() {
+    int userDefinedGroupCount;
+    do {
+        std::cout << "Please enter the number of groups expected in the dataset: " << std::endl;
+        std::cin >> userDefinedGroupCount;
+    } while (userDefinedGroupCount <= 0);
+    return userDefinedGroupCount;
+}
+
 bool canCalculateARI(std::vector<Point> points) {
     for (int i = 0; i < points.size(); i++) {
         if (points[i].group == -1) {
-            std::cout << "Attention : détection de point \"outlier\", l'ARI ne pourra donc pas être calculée." << std::endl;
+            std::cout << "\nWarning: detection of an \"outlier\" point, so ARI cannot be calculated." << std::endl;
             return false;
         }
     }
-    std::cout << "Tous les points ont été affectés à un groupe (pas d'Outlier), l'ARI peut donc être calculée." << std::endl;
+    std::cout << "\nAll points have been assigned to a group (no Outliers), so ARI can be calculated." << std::endl;
     return true;
 }
 
 bool isARIRequired() {
     std::string answer;
     do {
-        std::cout << "Do you want to calculate the ARI ? (y/n)" << std::endl;
+        std::cout << "Do you want to calculate the ARI to evaluate the clustering algorithm? (y/n)" << std::endl;
         std::cin >> answer;
     } while (answer != "y" && answer != "n");
     return answer == "y";
 }
 
-double calculateARI(std::vector<Point> points, int userDefinedGroupCount, int foundGroupCount, int pointCount) {
-    std::cout << "\nCalculating ARI..." << std::endl;
+double calculateARI(std::vector<Point> points, int userDefinedGroupCount, int pointCount) {
+    std::cout << "Calculating ARI..." << std::endl;
     std::vector<int> findGroupArray;
     std::vector<int> datasetGroupArray;
 
@@ -41,18 +50,18 @@ double calculateARI(std::vector<Point> points, int userDefinedGroupCount, int fo
         }
     }
 
-    // DEBUG
-    std::cout << "\nTableau avec les numéros des groupes de référence datasetGroupArray: " << std::endl;
+    // DEBUG : display the two arrays to compare the distribution
+    // of group numbers (datasetGroupArray) expected and found (findGroupArray)
+    /* std::cout << "DEBUG | Array with reference group numbers (expected numbers) datasetGroupArray: " << std::endl;
     for (int i = 0; i < datasetGroupArray.size(); i++) {
         std::cout << datasetGroupArray[i] << " ";
     }
-    std::cout << "\nTableau avec les numéros des groupes trouvés findGroupArray: " << std::endl;
+    std::cout << "\nDEBUG | Array with found group numbers findGroupArray: " << std::endl;
     for (int i = 0; i < findGroupArray.size(); i++) {
         std::cout << findGroupArray[i] << " ";
-    }
+    } */
 
     // Calculate ARI
-
     double a = 0.0;
     double b = 0.0;
     double c = 0.0;
@@ -90,8 +99,6 @@ double calculateARI(std::vector<Point> points, int userDefinedGroupCount, int fo
         ARI = a - ((b + a) * (c + a)) / (comb * 1.0);
         ARI = ARI / ((((b + a) + (c + a)) / 2.0) - (((b + a) * (c + a)) / (comb * 1.0)));
     }
-
-    std::cout << "\n\nARI Score (Adjusted Rand Index, better if close to 1): " << ARI << std::endl;
 
     return ARI;
 }
