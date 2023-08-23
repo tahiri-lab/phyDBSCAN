@@ -18,8 +18,6 @@ enum class PointType {
  */
 struct Point {
     std::vector<double> distances; /** Distances to all other points */
-    double x;
-    double y;
     PointType type = PointType::UNDEFINED; /** Point type (UNDEFINED, CORE, BORDER, or OUTLIER) */
     int group = 0; /** Group to which the point belongs */
 };

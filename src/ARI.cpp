@@ -91,7 +91,7 @@ double calculateARI(std::vector<Point> points, int userDefinedGroupCount, int po
         }
     }
 
-    double ARI = 0.0;
+    double ARI;
 
     if (a * 2.0 == ((b + a) + (c + a))) {
         ARI = 1.0;
