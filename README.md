@@ -5,7 +5,7 @@
         </p>
 
 
-<h2  align="center">Building alternative phylogenetic trees using DBSCAN and Robinson and Foulds distance</h2>
+<h2  align="center">Building alternative phylogenetic trees using DBSCAN</h2>
 
 
 
