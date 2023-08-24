@@ -52,7 +52,7 @@ make
 To run the project, execute:
 
 ```
-make run
+./phyDBSCAN
 ```
 
 To clean the project, execute:
