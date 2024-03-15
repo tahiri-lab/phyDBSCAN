@@ -63,7 +63,7 @@ void determineBorderAndOutlier(std::vector<Point>& points, double epsilon) {
     }
 }
 
-void printResults(const std::vector<Point>& points) {
+void printResults(const std::vector<Point>& points, std::string& Partition) {
     std::cout << "Writing results..." << std::endl;
     std::cout << "\nNumber of groups found: " << points[points.size() - 1].group << '\n';
     std::cout << "- Point \"#\": Group \"#\", \"Type\" (\"Core\"/\"Border\"/\"Outlier\")\n";
@@ -84,5 +84,15 @@ void printResults(const std::vector<Point>& points) {
                 break;
         }
         std::cout << '\n';
+
+        // Partition
+        int group = (points[i].group);
+        if(group == -1){ Partition += "NA"; }
+        else{ Partition += std::to_string(points[i].group); }
+        Partition += "<>";
     }
+
+    int taille = Partition.length();
+    Partition[taille-2] = ')';
+    Partition[taille-1] = '\0';
 }

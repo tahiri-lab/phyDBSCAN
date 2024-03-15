@@ -2,7 +2,7 @@
 #include <algorithm>
 
 double findBestEpsilon(const std::vector<Point>& points) {
-    std::cout << "Calculating best epsilon..." << std::endl;
+    std::cout << "Calculating best epsilon...\t";
     std::vector<std::vector<double>> distanceArray;
     for (const Point& point : points) {
         distanceArray.push_back(point.distances);
@@ -42,7 +42,7 @@ double findBestEpsilon(const std::vector<Point>& points) {
 }
 
 int findBestMinPoints(const std::vector<Point>& points, double epsilon) {
-    std::cout << "Calculating best minPoints..." << std::endl;
+    std::cout << "Calculating best minPoints... \t";
     std::vector<int> minPoints;
     for (const Point& point : points) {
         int count = 0;
@@ -58,5 +58,7 @@ int findBestMinPoints(const std::vector<Point>& points, double epsilon) {
     for (int count : minPoints) {
         totalMinPoints += count;
     }
+
+    //printf("\n OKay j'ai besoins d'aide pour les minPoints donc on a %d Total et %ld taille de liste", totalMinPoints, minPoints.size());
     return totalMinPoints / minPoints.size();
 }

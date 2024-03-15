@@ -36,6 +36,6 @@ void determineBorderAndOutlier(std::vector<Point>& points, double epsilon);
  *
  * @param points The vector of points to be displayed
  */
-void printResults(const std::vector<Point>& points);
+void printResults(const std::vector<Point>& points, std::string& Partition);
 
 #endif //PHYDBSCAN_CLUSTERING_H

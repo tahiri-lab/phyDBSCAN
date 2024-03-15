@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <map>
 #include "Point.h"
 
 /**
@@ -14,6 +15,6 @@
  * @param fileName The name of the input file
  * @param points The vector of points to be initialized
  */
-void readInputFile(const std::string& fileName, std::vector<Point>& points);
+void readInputFile(const std::string& fileName, std::vector<Point>& points, std::map <std::string, int>& info);
 
 #endif //PHYDBSCAN_FILEIO_H
