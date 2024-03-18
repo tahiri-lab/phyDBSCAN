@@ -14,11 +14,11 @@ int userDefinedGroupCountInput() {
 bool canCalculateARI(std::vector<Point> points) {
     for (int i = 0; i < points.size(); i++) {
         if (points[i].group == -1) {
-            std::cout << "\nWarning: detection of an \"outlier\" point, so ARI cannot be calculated." << std::endl;
+            //std::cout << "\nWarning: detection of an \"outlier\" point, so ARI cannot be calculated." << std::endl;
             return false;
         }
     }
-    std::cout << "\nAll points have been assigned to a group (no Outliers), so ARI can be calculated." << std::endl;
+    //std::cout << "\nAll points have been assigned to a group (no Outliers), so ARI can be calculated." << std::endl;
     return true;
 }
 

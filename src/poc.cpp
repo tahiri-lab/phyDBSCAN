@@ -9,6 +9,13 @@
 //using namespace std;
 
 int main(int nargc, char **argv) {
+
+    if(nargc < 3) {
+        printf("\nWrong command format. Format must be :\n\t > ./phyDBSCAN input_file output_file.csv \n");
+        exit(1);
+        }
+
+
     std::vector<Point> points;
     std::map <std::string, int> infoCSV;
     std::string fileName = argv[1];
@@ -65,6 +72,8 @@ int main(int nargc, char **argv) {
             infoCSV["best_Epsilon"] = bestEpsilon;
             infoCSV["best_MinPoints"] = bestMinPoints;
 
+            partition += "(";
+
             determineCoreAndGroup(points, bestEpsilon, bestMinPoints);
             determineBorderAndOutlier(points, bestEpsilon);
             printResults(points, partition);
@@ -72,7 +81,7 @@ int main(int nargc, char **argv) {
             if (canCalculateARI(points)) {
                 int fileDefinedGroupCount = infoCSV["#Clusters"];
                 double ARI = calculateARI(points, fileDefinedGroupCount, infoCSV["#Trees"]);
-                std::cout << "\n> Calculated ARI score (Adjusted Rand Index, better if close to 1) = " << ARI << std::endl;
+                //std::cout << "\n> Calculated ARI score (Adjusted Rand Index, better if close to 1) = " << ARI << std::endl;
             }
             fprintf(out,"DBSCAN;%f;%d;%d;%d;%d;%d;%s\n", bestEpsilon, bestMinPoints, infoCSV["#Trees"], infoCSV["#Leaves"], infoCSV["#Clusters"], infoCSV["Noise"], partition.c_str());
             points.clear();
@@ -94,6 +103,7 @@ int main(int nargc, char **argv) {
     determineCoreAndGroup(points, bestEpsilon, bestMinPoints);
     determineBorderAndOutlier(points, bestEpsilon);
 
+    partition += "(";
     printResults(points, partition);
     //printf("\n nyokay %d", infoCSV["#Clusters"]);
 
@@ -102,10 +112,10 @@ int main(int nargc, char **argv) {
             //int userDefinedGroupCount = userDefinedGroupCountInput();
             int fileDefinedGroupCount = infoCSV["#Clusters"];
             double ARI = calculateARI(points, fileDefinedGroupCount, infoCSV["#Trees"]);
-            std::cout << "\n> Calculated ARI score (Adjusted Rand Index, better if close to 1) = " << ARI << std::endl;
+            //std::cout << "\n> Calculated ARI score (Adjusted Rand Index, better if close to 1) = " << ARI << std::endl;
         //}
     }
-    fprintf(out,"DBSCAN;%f;%d;%d;%d;%d;%s\n", bestEpsilon, bestMinPoints, infoCSV["#Trees"], infoCSV["#Leaves"], infoCSV["#Clusters"], partition.c_str());
+    fprintf(out,"DBSCAN;%f;%d;%d;%d;%d;%d;%s\n", bestEpsilon, bestMinPoints, infoCSV["#Trees"], infoCSV["#Leaves"], infoCSV["#Clusters"], infoCSV["Noise"], partition.c_str());
     fclose(out);
     points.clear();
     return 0;

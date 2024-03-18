@@ -64,12 +64,12 @@ void determineBorderAndOutlier(std::vector<Point>& points, double epsilon) {
 }
 
 void printResults(const std::vector<Point>& points, std::string& Partition) {
-    std::cout << "Writing results..." << std::endl;
-    std::cout << "\nNumber of groups found: " << points[points.size() - 1].group << '\n';
-    std::cout << "- Point \"#\": Group \"#\", \"Type\" (\"Core\"/\"Border\"/\"Outlier\")\n";
+   // std::cout << "Writing results..." << std::endl;
+    //std::cout << "\nNumber of groups found: " << points[points.size() - 1].group << '\n';
+    //std::cout << "- Point \"#\": Group \"#\", \"Type\" (\"Core\"/\"Border\"/\"Outlier\")\n";
     for (size_t i = 0; i < points.size(); ++i) {
-        std::cout << "> Point " << i + 1 << ": Group " << (points[i].group == -1 ? "N/A" : std::to_string(points[i].group));
-        switch (points[i].type) {
+        //std::cout << "> Point " << i + 1 << ": Group " << (points[i].group == -1 ? "N/A" : std::to_string(points[i].group));
+        /*switch (points[i].type) {
             case PointType::CORE:
                 std::cout << ", Core";
                 break;
@@ -82,10 +82,11 @@ void printResults(const std::vector<Point>& points, std::string& Partition) {
             default:
                 std::cout << ", N/A";
                 break;
-        }
-        std::cout << '\n';
+        }*/
+        //std::cout << '\n';
 
         // Partition
+        //Partition += "(";
         int group = (points[i].group);
         if(group == -1){ Partition += "NA"; }
         else{ Partition += std::to_string(points[i].group); }

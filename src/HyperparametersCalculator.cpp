@@ -58,7 +58,5 @@ int findBestMinPoints(const std::vector<Point>& points, double epsilon) {
     for (int count : minPoints) {
         totalMinPoints += count;
     }
-
-    //printf("\n OKay j'ai besoins d'aide pour les minPoints donc on a %d Total et %ld taille de liste", totalMinPoints, minPoints.size());
     return totalMinPoints / minPoints.size();
 }
