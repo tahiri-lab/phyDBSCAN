@@ -21,9 +21,8 @@ void timeToInt(long& temps, auto time)
 void computation(std::vector<Point>& points, std::string& Partition,  std::map <std::string, int>& clusterParam, double& ARI, double& bestEpsilon, int& bestMinPoints)
 {
     bestEpsilon = findBestEpsilon(points);
-    //std::cout << "> Best epsilon: " << bestEpsilon << std::endl;
     bestMinPoints = findBestMinPoints(points, bestEpsilon);
-    //std::cout << "> Best minPoints: " << bestMinPoints << std::endl;
+    printf("\n Best epsilon found : %f \t Best min points found : %d\n", bestEpsilon, bestMinPoints);
 
     determineCoreAndGroup(points, bestEpsilon, bestMinPoints);
     determineBorderAndOutlier(points, bestEpsilon);
@@ -33,6 +32,7 @@ void computation(std::vector<Point>& points, std::string& Partition,  std::map <
         int fileDefinedGroupCount = clusterParam["#Clusters"];
         ARI = calculateARI(points, fileDefinedGroupCount, clusterParam["#Trees"]);
     }
+    else { printf("\nNo ARI calculated due to the presence of an outlier.\n"); }
 }
 
 
@@ -40,7 +40,7 @@ int main(int nargc, char **argv) {
     using std::chrono::system_clock;
 
     if(nargc < 3) {
-        printf("\nWrong command format. Format must be :\n\t > ./phyDBSCAN input_file output_file.csv \n");
+        printf("\nWrong command format. Format must be :\n\t > ./phyDBSCAN input_file.txt output_file.csv \n");
         exit(1);
         }
     
@@ -62,7 +62,9 @@ int main(int nargc, char **argv) {
     int i = 0;
 
     while (getline(inputFile, line)) {
-        if(line[0] == 49 || line[0] == 48)
+        int trest = line.find(".");
+
+        if(trest >= 0)
         {
             std::istringstream lineStream(line);
             Point point;
@@ -73,42 +75,43 @@ int main(int nargc, char **argv) {
 
             points.push_back(point);
         }
-        
-        else if (line[0] >= 49 && line[1]>=48)
-        {
-            // Initialize the starting time here
-            // Here that we start parsing and retrieving the necessary data.
-            starting = std::chrono::system_clock::now();
-            std::istringstream lineStream(line);
-            int data;
+        else if (trest = -1)
+        {  
+            if (line[0] >=49)
+            {   i=0;
+                // Initialize the starting time here
+                // Here that we start parsing and retrieving the necessary data.
+                starting = std::chrono::system_clock::now();
+                std::istringstream lineStream(line);
+                int data;
 
-            while (lineStream >> data) {
-
-                if(i == 0){ infoCSV["#Trees"] = data; }
-                else if (i == 1){ infoCSV["#Leaves"] = data; }
-                else if (i == 2){ infoCSV["#Clusters"] = data; }
-                else if (i == 4){ infoCSV["Noise"] = data; }
-                i++;
+                while (lineStream >> data)
+                {
+                    if(i == 0){ infoCSV["#Trees"] = data; }
+                    else if (i == 1){ infoCSV["#Leaves"] = data; }
+                    else if (i == 2){ infoCSV["#Clusters"] = data; }
+                    else if (i == 4){ infoCSV["Noise"] = data; }
+                    i++;
+                }
+                i = 0;
             }
-            i = 0;
-        }
 
-        else if (line[0] == 0)
-        {
-
-            partition += "(";
-            double ARI = 0;
-            computation(points, partition, infoCSV, ARI, best_Epsilon, best_MinPoints);
-            auto ending = std::chrono::system_clock::now();
-            timeToInt(start, starting);
-            timeToInt(end, ending);
+            else if (line[0] == 0)
+            {
+                partition += "(";
+                double ARI = 0;
+                computation(points, partition, infoCSV, ARI, best_Epsilon, best_MinPoints);
+                auto ending = std::chrono::system_clock::now();
+                timeToInt(start, starting);
+                timeToInt(end, ending);
 
             // Initialize the end time here
             // Retrieve time after every caculation is done
             // After, compute difference between start and end.
-            fprintf(out,"DBSCAN;%f;%d;%d;%d;%d;%d;%f;%s;%ld\n",best_Epsilon, best_MinPoints, infoCSV["#Trees"], infoCSV["#Leaves"], infoCSV["#Clusters"], infoCSV["Noise"], ARI, partition.c_str(), end-start);
-            points.clear();
-            partition = "";
+                fprintf(out,"DBSCAN;%f;%d;%d;%d;%d;%d;%f;%s;%ld\n",best_Epsilon, best_MinPoints, infoCSV["#Trees"], infoCSV["#Leaves"], infoCSV["#Clusters"], infoCSV["Noise"], ARI, partition.c_str(), end-start);
+                points.clear();
+                partition = "";
+            }
         }
 
     }
@@ -120,6 +123,7 @@ int main(int nargc, char **argv) {
     auto ending = std::chrono::system_clock::now();
     timeToInt(start, starting);
     timeToInt(end, ending);
+    //end = 0; start = 0;
     fprintf(out,"DBSCAN;%f;%d;%d;%d;%d;%d;%f;%s;%ld\n", best_Epsilon, best_MinPoints, infoCSV["#Trees"], infoCSV["#Leaves"], infoCSV["#Clusters"], infoCSV["Noise"], ARI, partition.c_str(), end-start);
     fclose(out);
     points.clear();

@@ -33,6 +33,7 @@ bool isARIRequired() {
 
 double calculateARI(std::vector<Point> points, int userDefinedGroupCount, int pointCount) {
     std::cout << "Calculating ARI..." << std::endl;
+
     std::vector<int> findGroupArray;
     std::vector<int> datasetGroupArray;
 
