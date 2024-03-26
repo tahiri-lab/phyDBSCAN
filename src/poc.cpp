@@ -12,8 +12,8 @@ using namespace std;
 
 void timeToInt(long& temps, auto time)
 {
-    auto µs_time = std::chrono::time_point_cast<std::chrono::microseconds>(time);
-    auto epoch_time = µs_time.time_since_epoch();
+    auto micros_time = std::chrono::time_point_cast<std::chrono::microseconds>(time);
+    auto epoch_time = micros_time.time_since_epoch();
     auto value_time = std::chrono::duration_cast<std::chrono::microseconds>(epoch_time);
     temps = value_time.count();
 }
