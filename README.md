@@ -52,7 +52,7 @@ make
 To run the project, execute:
 
 ```
-./phyDBSCAN
+./phyDBSCAN input.txt output.csv
 ```
 
 To clean the project, execute:
@@ -78,7 +78,8 @@ To test, we took a matrix from the "resources/input_simulation_dataset.txt" file
 
 Input Data Set used in this example (distance matrix) we put in the file "resources/input_data.txt":
 
-```0	0.4	0.4	0.4	0.4	1	1	1	1	1	0.8	1	1	1	1	0.8	0.8	0.6	0.8	0.8
+```
+0	0.4	0.4	0.4	0.4	1	1	1	1	1	0.8	1	1	1	1	0.8	0.8	0.6	0.8	0.8
 0.4	0	0.4	0.8	0.8	0.8	0.8	0.8	0.8	0.8	1	0.8	1	1	0.8	0.8	0.8	0.8	0.8	0.8
 0.4	0.4	0	0.8	0.8	1	1	1	1	1	1	1	0.8	0.8	1	0.8	0.8	0.8	0.8	0.8
 0.4	0.8	0.8	0	0.6	1	1	1	1	1	0.8	1	1	1	1	0.6	0.6	0.4	0.6	0.6
@@ -103,16 +104,31 @@ Input Data Set used in this example (distance matrix) we put in the file "resour
 In the "input_simulated_data.txt" file, the first line of this dataset is the following:
 20	8	4	0	50
 
-The first number (20) is the number of points in the dataset, the third number (4) is the number of clusters expected.
-This third number is used to calculate the ARI (Adjusted Rand Index).
+The first number (20) is the number of points in the dataset, the third number (4) is the number of clusters expected, it is used to calculate the ARI (Adjusted Rand Index).
 
-The output of the program is the following (with the number of groups expected in the dataset : 4):
+The output of the program will be stored in the output.csv file as follows :
+```
+DBSCAN;0.490000;3;20;8;4;50;1.000000;(1<>1<>1<>1<>1<>2<>2<>2<>2<>2<>3<>3<>3<>3<>3<>4<>4<>4<>4<>4);462
+```
+DBSCAN : method used for the clustering
 
-![exampleResult.png](https://github.com/tahiri-lab/phyDBSCAN/blob/main/img/exampleResult.png)
+0.490000 : value of epsilon
 
-And the output for ARI calculation is the following (*Only if there are no Outliers points*):
+3 : number of minimum points
 
-![exampleARICalculation.png](https://github.com/tahiri-lab/phyDBSCAN/blob/main/img/exampleARICalculation.png)
+20 : number of trees in the matrix
+
+8 : number of leaves in each trees
+
+4 : number of cluster we expect to find
+
+50 : noise (differences between the trees within a cluster)
+
+1.00000 : ARI
+
+(<><><>) : partition
+
+462 : time it took the program to calculate the clusters and ARI for the matrix
 
 # Contact
 Please email us at : <Nadia.Tahiri@USherbrooke.ca> or <Thibaut.Leval@USherbrooke.ca> for any question or feedback.
