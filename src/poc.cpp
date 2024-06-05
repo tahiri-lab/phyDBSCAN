@@ -28,11 +28,11 @@ void computation(std::vector<Point>& points, std::string& Partition,  std::map <
     determineBorderAndOutlier(points, bestEpsilon);
     printResults(points, Partition);
 
-    if (canCalculateARI(points)) {
+    //if (canCalculateARI(points)) {
         int fileDefinedGroupCount = clusterParam["#Clusters"];
         ARI = calculateARI(points, fileDefinedGroupCount, clusterParam["#Trees"]);
-    }
-    else { printf("\nNo ARI calculated due to the presence of an outlier.\n"); }
+   // }
+    //else { printf("\nNo ARI calculated due to the presence of an outlier.\n"); }
 }
 
 
@@ -62,9 +62,9 @@ int main(int nargc, char **argv) {
     int i = 0;
 
     while (getline(inputFile, line)) {
-        int trest = line.find(".");
+        int find_decimal = line.find(".");
 
-        if(trest >= 0)
+        if(find_decimal >= 0)
         {
             std::istringstream lineStream(line);
             Point point;
@@ -75,9 +75,20 @@ int main(int nargc, char **argv) {
 
             points.push_back(point);
         }
-        else if (trest = -1)
-        {  
-            if (line[0] >=49)
+        else if (find_decimal = -1)
+        {
+            if (line[0] == 47 || line[0] == 48)
+            {
+                std::istringstream lineStream(line);
+                Point point;
+                double distance;
+                while (lineStream >> distance) {
+                    point.distances.push_back(distance);
+                }
+
+                points.push_back(point);
+            }
+            else if (line[0] >=49 && line[1]>=48)
             {   i=0;
                 // Initialize the starting time here
                 // Here that we start parsing and retrieving the necessary data.
@@ -123,7 +134,6 @@ int main(int nargc, char **argv) {
     auto ending = std::chrono::system_clock::now();
     timeToInt(start, starting);
     timeToInt(end, ending);
-    //end = 0; start = 0;
     fprintf(out,"DBSCAN;%f;%d;%d;%d;%d;%d;%f;%s;%ld\n", best_Epsilon, best_MinPoints, infoCSV["#Trees"], infoCSV["#Leaves"], infoCSV["#Clusters"], infoCSV["Noise"], ARI, partition.c_str(), end-start);
     fclose(out);
     points.clear();

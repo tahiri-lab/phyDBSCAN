@@ -100,6 +100,7 @@ double calculateARI(std::vector<Point> points, int userDefinedGroupCount, int po
         ARI = a - ((b + a) * (c + a)) / (comb * 1.0);
         ARI = ARI / ((((b + a) + (c + a)) / 2.0) - (((b + a) * (c + a)) / (comb * 1.0)));
     }
+    //printf("hello %f", ARI);
 
     return ARI;
 }
